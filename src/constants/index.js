@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://gp-js-test.herokuapp.com/pizza';
