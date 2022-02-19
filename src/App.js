@@ -1,26 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
-import {PizzaSlice} from "./components/PizzaSlice";
-import {useEndpoint} from "./hooks/useEndpoint";
-import {BASE_URL} from "./constants";
+import {TotalTable} from "./components/TotalTable";
+import {useApp} from "./hooks";
 
 export default function App() {
 
-	// const [partyGuests, setPartyGuests] = useState(null)
-	let partyGuests = (useEndpoint(`${BASE_URL}/guests`))
+	const {isLoading} = useApp()
+	console.log(isLoading)
+
+	const [startParty, setStartParty] = useState(false)
+	// const [isLoading, setIsLoading] = useState(false)
+	const [appInitialized, setAppInitialized] = useState(false)
 
 	const onButtonClick = () => {
-
+		setStartParty(true)
 	}
+
 
 	return (
 		<div className="App">
-			<button id="load-btn" className={partyGuests.pending ? 'loading' : ''}
-					onClick={onButtonClick}>Load party
+			<button
+				id="load-btn"
+				className={isLoading ? 'loading' : ''}
+				onClick={onButtonClick}
+			>
+				Load party
 			</button>
-			{(partyGuests.pending && <div>Loading...</div>) ||
-			(partyGuests.complete && <PizzaSlice partyGuests={partyGuests.data.party}/>)}
-
+			{appInitialized ?
+				<TotalTable
+					// setIsLoading={setIsLoading}
+					setAppInitialized={setAppInitialized}
+					setStartParty={setStartParty}
+				/>
+				: null
+			}
 		</div>
 	);
 }
