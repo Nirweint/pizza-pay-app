@@ -1,18 +1,18 @@
 import React, {useState} from "react";
 import "./App.css";
-import {TotalTable} from "./components/TotalTable";
 import {useApp} from "./hooks";
+import {PizzaSlice} from "./components/PizzaSlice";
 
 export default function App() {
 
-	const {isLoading} = useApp()
-	console.log(isLoading)
+	const {isLoading, fetchGuests} = useApp()
 
 	const [startParty, setStartParty] = useState(false)
 	// const [isLoading, setIsLoading] = useState(false)
 	const [appInitialized, setAppInitialized] = useState(false)
 
 	const onButtonClick = () => {
+		fetchGuests()
 		setStartParty(true)
 	}
 
@@ -26,14 +26,8 @@ export default function App() {
 			>
 				Load party
 			</button>
-			{appInitialized ?
-				<TotalTable
-					// setIsLoading={setIsLoading}
-					setAppInitialized={setAppInitialized}
-					setStartParty={setStartParty}
-				/>
-				: null
-			}
+			{isLoading && <div>Loading</div>}
+			{startParty && <PizzaSlice/>}
 		</div>
 	);
 }

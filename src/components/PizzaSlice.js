@@ -1,15 +1,18 @@
 import React from 'react'
+import {useApp} from "../hooks";
 
-export const PizzaSlice = ({partyGuests}) => {
+export const PizzaSlice = () => {
 
-	let numberOfEaters = partyGuests.reduce((acc, person) => {
+	const { guests } = useApp()
+
+	let numberOfEaters = guests.reduce((acc, person) => {
 		if (person.eatsPizza) {
 			acc = acc + 1;
 		}
 		return acc;
 	}, 0);
 
-	let participants = partyGuests.length;
+	let participants = guests.length;
 	let slices = numberOfEaters / 2;
 	let slicesDeg = 360 / numberOfEaters;
 
