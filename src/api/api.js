@@ -9,7 +9,7 @@ export const api = {
 		return fetch(`${BASE_URL}/currency`)
 			.then((response) => response.json())
 	},
-	checkGuestsOnVegans(names) {
+	checkGuestsDiet(names) {
 		return fetch(`${BASE_URL}/world-diets-book/${names}`)
 			.then((response) => response.json())
 	},

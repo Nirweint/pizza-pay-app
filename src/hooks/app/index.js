@@ -1,5 +1,4 @@
 import { useGlobalStore } from '../../store';
-
 import bindActions from '../../store/bindActions';
 import appReducer from '../../store/app';
 
@@ -14,11 +13,15 @@ export const useApp = () => {
 	// List of Actions
 	const {
 		fetchGuests,
+		fetchGuestsDiet,
+		startPartyNow,
 	} = actions;
 
 	// Bind Actions
 	const appActions = bindActions({
 		fetchGuests,
+		fetchGuestsDiet,
+		startPartyNow,
 	}, dispatch);
 
 	return { ...app, ...appActions };

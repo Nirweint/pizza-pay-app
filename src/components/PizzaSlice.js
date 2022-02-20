@@ -1,16 +1,12 @@
 import React from 'react'
 import {useApp} from "../hooks";
+import {getNumberOfEaters} from "../utils";
 
 export const PizzaSlice = () => {
 
-	const { guests } = useApp()
+	const {guests} = useApp()
 
-	let numberOfEaters = guests.reduce((acc, person) => {
-		if (person.eatsPizza) {
-			acc = acc + 1;
-		}
-		return acc;
-	}, 0);
+	let numberOfEaters = getNumberOfEaters(guests)
 
 	let participants = guests.length;
 	let slices = numberOfEaters / 2;
