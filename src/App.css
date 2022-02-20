@@ -2,7 +2,7 @@ body {
     font-family: sans-serif;
 }
 
-button {
+#appBtn {
     padding: 5px 25px;
     background: red;
     color: #fff;

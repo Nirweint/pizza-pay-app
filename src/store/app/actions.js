@@ -60,6 +60,7 @@ export function setInitializeApp(payload) {
 
 export const startPartyNow = () => async dispatch => {
 	dispatch(setLoading(true))
+	dispatch(setInitializeApp(false))
 
 	try {
 		const partyGuestsResponse = await api.getPartyGuests()

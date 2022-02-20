@@ -12,15 +12,11 @@ export const useApp = () => {
 
 	// List of Actions
 	const {
-		fetchGuests,
-		fetchGuestsDiet,
 		startPartyNow,
 	} = actions;
 
 	// Bind Actions
 	const appActions = bindActions({
-		fetchGuests,
-		fetchGuestsDiet,
 		startPartyNow,
 	}, dispatch);
 

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import {useApp} from "./hooks";
 import {PizzaSlice} from "./components/PizzaSlice";
+import TotalTable from "./components/TotalTable";
 
 export default function App() {
 
@@ -14,14 +15,17 @@ export default function App() {
 	return (
 		<div className="App">
 			<button
-				id="load-btn"
+				id={'appBtn'}
 				className={isLoading ? 'loading' : ''}
 				onClick={onButtonClick}
 			>
 				Load party
 			</button>
 			{isLoading && <div>Loading</div>}
-			{appInitialized && <PizzaSlice/>}
+			{appInitialized && <div>
+				<PizzaSlice/>
+				<TotalTable/>
+			</div>}
 		</div>
 	);
 }
