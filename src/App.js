@@ -16,7 +16,7 @@ export default function App() {
 		<div className="App">
 			<button
 				id={'appBtn'}
-				className={isLoading ? 'loading' : ''}
+				className={isLoading ? 'loading appBtn' : 'appBtn'}
 				onClick={onButtonClick}
 			>
 				Load party

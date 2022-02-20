@@ -12,7 +12,7 @@ const TotalTable = () => {
 	const guestEaters = guests.filter(guest => guest.eatsPizza)
 
 	const shareToPay = Math.floor10(order / guestEaters.length, -1)
-	const moneyToCollectInit = Math.ceil10(shareToPay * guestEaters.length, -1)
+	const moneyToCollectInit = Math.round10(shareToPay * guestEaters.length, -1)
 	const totalOrder = moneyToCollectInit
 
 	const [moneyToCollect, setMoneyToCollect] = useState(moneyToCollectInit)
@@ -26,8 +26,8 @@ const TotalTable = () => {
 	}
 
 	return (
-		<div style={{border: '1px solid #000'}}>
-			<table style={{width: '100%'}}>
+		<div className={'tableWrapper'}>
+			<table className={'table'}>
 				<thead>
 				<tr>
 					<th>Name</th>
@@ -40,22 +40,21 @@ const TotalTable = () => {
 				{guestEaters.map(({name}, index) => {
 					return (
 						<GuestTableItem name={name} key={index} shareToPay={shareToPay}
-										onPayClick={handlePayClick}/>
+										handlePayClick={handlePayClick}/>
 					)
 				})}
 
-				< tr style={{fontWeight: "600"}}>
+				<tr className={'bold'}>
 					<td>Total order</td>
 					<td>{totalOrder}</td>
 				</tr>
-				<tr style={{fontWeight: "600"}}>
+				<tr className={'bold'}>
 					<td>Money to collect</td>
-					<td>{Math.floor10(moneyToCollect, -1)} BYN</td>
+					<td>{Math.round10(moneyToCollect, -1)} BYN</td>
 				</tr>
-				<tr style={{fontWeight: "600"}}>
+				<tr className={'bold'}>
 					<td>Money collected</td>
-					<td>{Math.floor10(collectedMoney, -1)} BYN</td>
-					<td></td>
+					<td>{Math.round10(collectedMoney, -1)} BYN</td>
 				</tr>
 				</tbody>
 			</table>

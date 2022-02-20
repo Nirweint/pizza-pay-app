@@ -1,3 +1,19 @@
-table, th, td {
+th, td {
     border:1px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+.tableWrapper {
+    border:1px solid black;
+    padding: 20px;
+    width: fit-content;
+}
+
+.table {
+    min-width: 700px;
+}
+
+.bold {
+    font-weight: 600;
 }

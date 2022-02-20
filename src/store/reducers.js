@@ -1,5 +1,4 @@
 import appReducer from './app';
-import { logger } from './middlewares';
 
 
 export const initialState = {
@@ -14,9 +13,6 @@ export default function mainReducer(state, action) {
 	const currentState = {
 		app: appReducer.reducer(app, action),
 	};
-
-	// Middlewares
-	logger(action, state, currentState);
 
 	return currentState;
 }
